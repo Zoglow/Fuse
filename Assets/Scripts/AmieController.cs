@@ -26,6 +26,8 @@ public class AmieController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        if (!PlayerManager.isGameStarted) return;
+
         animator.SetBool("isGameStarted", true);
 
         direction.z = forwardSpeed;
@@ -79,6 +81,8 @@ public class AmieController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+
+        if (!PlayerManager.isGameStarted) return;
 
         controller.Move(direction * Time.fixedDeltaTime);
     }
