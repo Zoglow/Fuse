@@ -9,6 +9,7 @@ public class AmieController : MonoBehaviour {
     private Vector3 direction;
     public float forwardSpeed;
     public float jumpSpeed;
+    public float maxSpeed;
 
     public int desiredLane = 1; // Left = 0, Middle = 1, Right = 2
     public float laneDistance = 4; // Distance between two lanes
@@ -27,16 +28,24 @@ public class AmieController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        // Show that game has started
         if (!PlayerManager.isGameStarted) return;
-
         animator.SetBool("isGameStarted", true);
+
+        // Increase speed with time
+        if (forwardSpeed < maxSpeed) {
+            forwardSpeed += 0.1f * Time.deltaTime;
+            jumpSpeed += 0.1f * Time.deltaTime;
+        }
+        
 
         if (controller.isGrounded) {
             direction.z = forwardSpeed;
         } else {
             direction.z = jumpSpeed;
         }
-        
+
+
         direction.y += gravity * Time.deltaTime;
 
         animator.SetBool("isGrounded", controller.isGrounded);

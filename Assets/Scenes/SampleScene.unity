@@ -1131,6 +1131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 10
   jumpSpeed: 13
+  maxSpeed: 20
   desiredLane: 1
   laneDistance: 1
   jumpForce: 5
