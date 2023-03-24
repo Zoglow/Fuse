@@ -8,6 +8,7 @@ public class AmieController : MonoBehaviour {
     private CharacterController controller;
     private Vector3 direction;
     public float forwardSpeed;
+    public float jumpSpeed;
 
     private int desiredLane = 1; // Left = 0, Middle = 1, Right = 2
     public float laneDistance = 4; // Distance between two lanes
@@ -30,7 +31,12 @@ public class AmieController : MonoBehaviour {
 
         animator.SetBool("isGameStarted", true);
 
-        direction.z = forwardSpeed;
+        if (controller.isGrounded) {
+            direction.z = forwardSpeed;
+        } else {
+            direction.z = jumpSpeed;
+        }
+        
         direction.y += gravity * Time.deltaTime;
 
         animator.SetBool("isGrounded", controller.isGrounded);
@@ -89,6 +95,7 @@ public class AmieController : MonoBehaviour {
 
     private void Jump() {
         direction.y = jumpForce;
+
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
