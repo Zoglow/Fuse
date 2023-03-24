@@ -15,6 +15,7 @@ public class AmieController : MonoBehaviour {
     public float laneDistance = 4; // Distance between two lanes
 
     public float jumpForce;
+    public float groundThreshold = 0.1f;
     public float gravity = -30;
 
     public Animator animator;
@@ -37,18 +38,17 @@ public class AmieController : MonoBehaviour {
             forwardSpeed += 0.1f * Time.deltaTime;
             jumpSpeed += 0.1f * Time.deltaTime;
         }
-        
+
 
         if (controller.isGrounded) {
             direction.z = forwardSpeed;
         } else {
             direction.z = jumpSpeed;
         }
-
-
+              
         direction.y += gravity * Time.deltaTime;
 
-        animator.SetBool("isGrounded", controller.isGrounded);
+        animator.SetBool("isGrounded", controller.isGrounded || controller.velocity.y < groundThreshold);
 
         // Recieve input to jump
 
