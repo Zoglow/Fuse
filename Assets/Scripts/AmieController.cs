@@ -10,7 +10,7 @@ public class AmieController : MonoBehaviour {
     public float forwardSpeed;
     public float jumpSpeed;
 
-    private int desiredLane = 1; // Left = 0, Middle = 1, Right = 2
+    public int desiredLane = 1; // Left = 0, Middle = 1, Right = 2
     public float laneDistance = 4; // Distance between two lanes
 
     public float jumpForce;

@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.84313726, g: 0.80784315, b: 0.83137256, a: 1}
+  m_FogColor: {r: 0.84313726, g: 0.81960785, b: 0.80784315, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
@@ -513,8 +513,9 @@ MonoBehaviour:
   tilePrefabs:
   - {fileID: 8311688820800627327, guid: 557b4c47f3ca64f0c9b6c859af09cf63, type: 3}
   - {fileID: 2333059623076329600, guid: 253930a06e29b43fa844ce40c310457e, type: 3}
+  - {fileID: 6905371686261351940, guid: 978d483965c9e44f0a227df90ac65ace, type: 3}
   zSpawn: 0
-  tileLength: 9.9
+  tileLength: 20
   numTiles: 5
   playerTransform: {fileID: 1275593574}
 --- !u!4 &600450138
@@ -884,6 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1275593574}
+  laneOffset: 0
 --- !u!1 &1233412023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 10
   jumpSpeed: 13
+  desiredLane: 1
   laneDistance: 1
   jumpForce: 5
   gravity: -20
