@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -8,8 +9,10 @@ public class PlayerManager : MonoBehaviour {
     public GameObject gameOverPanel;
 
     public static bool isGameStarted;
-
     public GameObject startingText;
+
+    public static int numGems;
+    public TextMeshProUGUI gemsText;
 
     // Start is called before the first frame update
     void Start() {
@@ -17,10 +20,13 @@ public class PlayerManager : MonoBehaviour {
         Time.timeScale = 1;
         gameOver = false;
         isGameStarted = false;
+        numGems = 0;
     }
 
     // Update is called once per frame
     void Update() {
+
+        gemsText.text = "Gems: " + numGems;
 
         if (gameOver) {
 
@@ -29,9 +35,17 @@ public class PlayerManager : MonoBehaviour {
         }
 
         if (Input.GetMouseButtonDown(0) || Input.anyKeyDown) {
-            isGameStarted = true;
-            Destroy(startingText);
+
+            if (isGameStarted == false) {
+                isGameStarted = true;
+                Destroy(startingText);
+                FindObjectOfType<AudioManager>().playSound("Theme");
+            }
+            
+           
         }
+
+
         
     }
 }

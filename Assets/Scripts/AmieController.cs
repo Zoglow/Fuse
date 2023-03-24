@@ -112,6 +112,9 @@ public class AmieController : MonoBehaviour {
         if(hit.transform.tag == "Obstacle") {
 
             PlayerManager.gameOver = true;
+            FindObjectOfType<AudioManager>().playSound("GameOver");
+            FindObjectOfType<AudioManager>().stopSound("Theme");
+
         }
 
     }
